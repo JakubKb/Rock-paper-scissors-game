@@ -18,10 +18,10 @@
 export default {};
 </script>
 
-<style scpoed>
+<style scoped>
 .container {
   color: #fff;
-  border: 2px solid hsl(217, 16%, 45%);
+  border: 3px solid hsl(217, 16%, 45%);
   padding: 10px;
   border-radius: 7px;
   display: flex;
