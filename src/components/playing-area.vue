@@ -1,9 +1,15 @@
 <template>
   <div class="container">
     <img src="../assets/images/bg-triangle.svg" />
-    <button class="paper"></button>
-    <button class="scissors"></button>
-    <button class="rock"></button>
+    <button class="paper play-btn">
+      <img src="../assets/images/icon-paper.svg" />
+    </button>
+    <button class="scissors play-btn">
+      <img src="../assets/images/icon-scissors.svg" />
+    </button>
+    <button class="rock play-btn">
+      <img src="../assets/images/icon-rock.svg" />
+    </button>
   </div>
 </template>
 
@@ -23,5 +29,41 @@ export default {};
   margin: auto;
   height: 200px;
   width: 200px;
+}
+
+.play-btn {
+  position: relative;
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  -webkit-box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
+  -moz-box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
+  box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
+}
+
+.paper {
+  background-color: #4766f4;
+}
+
+.scissors {
+  background-color: #eda51c;
+}
+
+.rock {
+  background-color: #db3152;
+}
+
+.play-btn img {
+  height: 80px;
+  width: 80px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 20px;
+  -webkit-box-shadow: inset -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
+  -moz-box-shadow: inset -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
+  box-shadow: inset -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
 }
 </style>
