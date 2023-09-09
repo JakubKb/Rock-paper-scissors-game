@@ -1,11 +1,31 @@
 <template>
   <div class="container">
-    <button class="rules-btn">Rules</button>
+    <button class="rules-btn" @click="openRules">Rules</button>
   </div>
+  <rules :style="{ display: rulesDisplay }" />
 </template>
 
 <script>
-export default {};
+import rules from "./rules.vue";
+export default {
+  components: {
+    rules: rules,
+  },
+  data() {
+    return {
+      rulesDisplay: "none",
+    };
+  },
+  methods: {
+    openRules() {
+      if (this.rulesDisplay === "none") {
+        this.rulesDisplay = "flex";
+      } else if (this.rulesDisplay === "flex") {
+        this.rulesDisplay = "none";
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

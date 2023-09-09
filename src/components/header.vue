@@ -1,17 +1,19 @@
 <template>
-  <div class="container">
-    <ul>
-      <li>Rock</li>
-      <li>Paper</li>
-      <li>Scissors</li>
-    </ul>
-    <div class="score">
-      <span class="score-text">
-        <p>Score</p>
-        <h3>12</h3>
-      </span>
+  <span class="container-wrapper">
+    <div class="container">
+      <ul>
+        <li>Rock</li>
+        <li>Paper</li>
+        <li>Scissors</li>
+      </ul>
+      <div class="score">
+        <span class="score-text">
+          <p>Score</p>
+          <h3>12</h3>
+        </span>
+      </div>
     </div>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -28,6 +30,10 @@ export default {};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.container-wrapper {
+  padding: 20px;
 }
 
 .container ul {

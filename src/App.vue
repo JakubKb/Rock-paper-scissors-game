@@ -31,7 +31,6 @@ export default {
 
 body {
   overflow: hidden;
-  padding: 20px;
   height: 100vh;
   width: 100vw;
   background: radial-gradient(circle, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
