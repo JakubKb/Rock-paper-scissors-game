@@ -2,7 +2,7 @@
   <div class="container">
     <button class="rules-btn" @click="openRules">Rules</button>
   </div>
-  <rules :style="{ display: rulesDisplay }" />
+  <rules :style="{ display: rulesDisplay }" @close="closeRules" />
 </template>
 
 <script>
@@ -20,9 +20,10 @@ export default {
     openRules() {
       if (this.rulesDisplay === "none") {
         this.rulesDisplay = "flex";
-      } else if (this.rulesDisplay === "flex") {
-        this.rulesDisplay = "none";
       }
+    },
+    closeRules() {
+      this.rulesDisplay = "none";
     },
   },
 };
@@ -44,5 +45,6 @@ export default {
   font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: 600;
   border-radius: 7px;
+  cursor: pointer;
 }
 </style>

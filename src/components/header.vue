@@ -9,7 +9,7 @@
       <div class="score">
         <span class="score-text">
           <p>Score</p>
-          <h3>12</h3>
+          <h3>{{ score }}</h3>
         </span>
       </div>
     </div>
@@ -17,7 +17,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      score: 0,
+    };
+  },
+};
 </script>
 
 <style scoped>

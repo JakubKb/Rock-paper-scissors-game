@@ -47,6 +47,7 @@ export default {};
   -webkit-box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
   -moz-box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
   box-shadow: inset -4px -40px 6px -26px rgba(66, 68, 90, 0.5);
+  cursor: pointer;
 }
 
 .paper {
