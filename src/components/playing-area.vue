@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{ 'no-bg': hideBackground }">
     <span class="top-btns">
       <button
         class="paper play-btn"
@@ -33,6 +33,7 @@ export default {
       paperBtnDisplay: "flex",
       scissorsBtnDisplay: "flex",
       rockBtnDisplay: "flex",
+      hideBackground: false,
     };
   },
   methods: {
@@ -46,6 +47,7 @@ export default {
       if (btnToKeep !== "rock") {
         this.rockBtnDisplay = "none";
       }
+      this.hideBackground = true;
     },
   },
 };
@@ -61,6 +63,10 @@ export default {
   background: url("../assets/images/bg-triangle.svg");
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.container.no-bg {
+  background: none;
 }
 
 .container img {
