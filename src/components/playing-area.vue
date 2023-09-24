@@ -4,14 +4,16 @@
       <button
         class="paper play-btn"
         :style="{ display: paperBtnDisplay }"
-        @click="hideAllExcept('paper')"
+        @click="makeChoice('paper')"
+        ref="paperButton"
       >
         <img src="../assets/images/icon-paper.svg" />
       </button>
       <button
         class="scissors play-btn"
         :style="{ display: scissorsBtnDisplay }"
-        @click="hideAllExcept('scissors')"
+        @click="makeChoice('scissors')"
+        ref="scissorsButton"
       >
         <img src="../assets/images/icon-scissors.svg" />
       </button>
@@ -19,7 +21,8 @@
     <button
       class="rock play-btn"
       :style="{ display: rockBtnDisplay }"
-      @click="hideAllExcept('rock')"
+      @click="makeChoice('rock')"
+      ref="rockButton"
     >
       <img src="../assets/images/icon-rock.svg" />
     </button>
@@ -33,26 +36,44 @@ export default {
       paperBtnDisplay: "flex",
       scissorsBtnDisplay: "flex",
       rockBtnDisplay: "flex",
+      youPicked: "",
+      housePicked: "",
       hideBackground: false,
     };
   },
   methods: {
-    hideAllExcept(btnToKeep) {
-      if (btnToKeep !== "paper") {
-        this.paperBtnDisplay = "none";
+    makeChoice(playerChoice) {
+      const choices = ["paper", "scissors", "rock"];
+
+      // Losowanie wyboru "house" z uwzględnieniem reguł
+      const randomIndex = Math.floor(Math.random() * choices.length);
+      const houseChoice = choices[randomIndex];
+
+      // Jeśli gracz wybrał nożyczki, "house" wybiera kamień lub papier
+      if (playerChoice === "scissors") {
+        this.housePicked = ["rock", "paper"][Math.floor(Math.random() * 2)];
+      } else {
+        this.housePicked = houseChoice;
       }
-      if (btnToKeep !== "scissors") {
-        this.scissorsBtnDisplay = "none";
-      }
-      if (btnToKeep !== "rock") {
-        this.rockBtnDisplay = "none";
-      }
+
+      this.youPicked = playerChoice;
       this.hideBackground = true;
+
+      // Ukryj przyciski, które nie zostały wybrane
+      choices.forEach((choice) => {
+        this.$refs[choice + "Button"].classList.remove("selected");
+        if (choice !== playerChoice && choice !== this.housePicked) {
+          this.$refs[choice + "Button"].style.display = "none";
+        }
+      });
+
+      // Zaznacz przycisk gracza i bota
+      this.$refs[this.youPicked + "Button"].classList.add("selected");
+      this.$refs[this.housePicked + "Button"].classList.add("selected");
     },
   },
 };
 </script>
-
 <style scoped>
 .container {
   display: flex;
@@ -117,5 +138,11 @@ export default {
   display: flex;
   gap: 100px;
   margin-bottom: 50px;
+}
+
+.selected {
+  -webkit-box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
+  -moz-box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
+  box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
 }
 </style>
