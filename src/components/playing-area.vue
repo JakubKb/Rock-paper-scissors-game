@@ -1,21 +1,54 @@
 <template>
   <div class="container">
     <span class="top-btns">
-      <button class="paper play-btn">
+      <button
+        class="paper play-btn"
+        :style="{ display: paperBtnDisplay }"
+        @click="hideAllExcept('paper')"
+      >
         <img src="../assets/images/icon-paper.svg" />
       </button>
-      <button class="scissors play-btn">
+      <button
+        class="scissors play-btn"
+        :style="{ display: scissorsBtnDisplay }"
+        @click="hideAllExcept('scissors')"
+      >
         <img src="../assets/images/icon-scissors.svg" />
       </button>
     </span>
-    <button class="rock play-btn">
+    <button
+      class="rock play-btn"
+      :style="{ display: rockBtnDisplay }"
+      @click="hideAllExcept('rock')"
+    >
       <img src="../assets/images/icon-rock.svg" />
     </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      paperBtnDisplay: "flex",
+      scissorsBtnDisplay: "flex",
+      rockBtnDisplay: "flex",
+    };
+  },
+  methods: {
+    hideAllExcept(btnToKeep) {
+      if (btnToKeep !== "paper") {
+        this.paperBtnDisplay = "none";
+      }
+      if (btnToKeep !== "scissors") {
+        this.scissorsBtnDisplay = "none";
+      }
+      if (btnToKeep !== "rock") {
+        this.rockBtnDisplay = "none";
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
