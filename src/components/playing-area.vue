@@ -6,6 +6,7 @@
         :style="{ display: paperBtnDisplay }"
         @click="makeChoice('paper')"
         ref="paperButton"
+        :disabled="buttonsDisabled"
       >
         <img src="../assets/images/icon-paper.svg" />
       </button>
@@ -14,6 +15,7 @@
         :style="{ display: scissorsBtnDisplay }"
         @click="makeChoice('scissors')"
         ref="scissorsButton"
+        :disabled="buttonsDisabled"
       >
         <img src="../assets/images/icon-scissors.svg" />
       </button>
@@ -23,6 +25,7 @@
       :style="{ display: rockBtnDisplay }"
       @click="makeChoice('rock')"
       ref="rockButton"
+      :disabled="buttonsDisabled"
     >
       <img src="../assets/images/icon-rock.svg" />
     </button>
@@ -36,6 +39,7 @@ export default {
       paperBtnDisplay: "flex",
       scissorsBtnDisplay: "flex",
       rockBtnDisplay: "flex",
+      buttonsDisabled: false,
       youPicked: "",
       housePicked: "",
       hideBackground: false,
@@ -43,13 +47,12 @@ export default {
   },
   methods: {
     makeChoice(playerChoice) {
+      this.buttonsDisabled = true;
       const choices = ["paper", "scissors", "rock"];
 
-      // Losowanie wyboru "house" z uwzględnieniem reguł
       const randomIndex = Math.floor(Math.random() * choices.length);
       const houseChoice = choices[randomIndex];
 
-      // Jeśli gracz wybrał nożyczki, "house" wybiera kamień lub papier
       if (playerChoice === "scissors") {
         this.housePicked = ["rock", "paper"][Math.floor(Math.random() * 2)];
       } else {
@@ -59,7 +62,6 @@ export default {
       this.youPicked = playerChoice;
       this.hideBackground = true;
 
-      // Ukryj przyciski, które nie zostały wybrane
       choices.forEach((choice) => {
         this.$refs[choice + "Button"].classList.remove("selected");
         if (choice !== playerChoice && choice !== this.housePicked) {
@@ -67,7 +69,6 @@ export default {
         }
       });
 
-      // Zaznacz przycisk gracza i bota
       this.$refs[this.youPicked + "Button"].classList.add("selected");
       this.$refs[this.housePicked + "Button"].classList.add("selected");
     },
