@@ -3,7 +3,6 @@
     <span class="top-btns">
       <button
         class="paper play-btn"
-        :style="{ display: paperBtnDisplay }"
         @click="makeChoice('paper')"
         ref="paperButton"
         :disabled="buttonsDisabled"
@@ -12,7 +11,6 @@
       </button>
       <button
         class="scissors play-btn"
-        :style="{ display: scissorsBtnDisplay }"
         @click="makeChoice('scissors')"
         ref="scissorsButton"
         :disabled="buttonsDisabled"
@@ -22,7 +20,6 @@
     </span>
     <button
       class="rock play-btn"
-      :style="{ display: rockBtnDisplay }"
       @click="makeChoice('rock')"
       ref="rockButton"
       :disabled="buttonsDisabled"
@@ -36,9 +33,6 @@
 export default {
   data() {
     return {
-      paperBtnDisplay: "flex",
-      scissorsBtnDisplay: "flex",
-      rockBtnDisplay: "flex",
       buttonsDisabled: false,
       youPicked: "",
       housePicked: "",
@@ -59,18 +53,22 @@ export default {
         this.housePicked = houseChoice;
       }
 
+      this.$refs[playerChoice + "Button"].classList.add("selected");
+      this.$refs[houseChoice + "Button"].classList.add("selected");
+
       this.youPicked = playerChoice;
       this.hideBackground = true;
-
-      choices.forEach((choice) => {
-        this.$refs[choice + "Button"].classList.remove("selected");
-        if (choice !== playerChoice && choice !== this.housePicked) {
+      for (let i = 0; i < choices.length; i++) {
+        const choice = choices[i];
+        if (choice !== this.youPicked && choice !== this.housePicked) {
           this.$refs[choice + "Button"].style.display = "none";
+        } else if (
+          this.housePicked == this.youPicked ||
+          this.youPicked == this.housePicked
+        ) {
+          return;
         }
-      });
-
-      this.$refs[this.youPicked + "Button"].classList.add("selected");
-      this.$refs[this.housePicked + "Button"].classList.add("selected");
+      }
     },
   },
 };
@@ -101,7 +99,6 @@ export default {
   position: relative;
   border-radius: 50%;
   padding: 15px;
-  display: flex;
   justify-content: center;
   align-content: center;
   border: none;
@@ -113,15 +110,18 @@ export default {
 
 .paper {
   background-color: #4766f4;
+  display: flex;
 }
 
 .scissors {
   background-color: #eda51c;
+  display: flex;
 }
 
 .rock {
   background-color: #db3152;
   margin-bottom: 50px;
+  display: flex;
 }
 
 .play-btn img {
