@@ -1,24 +1,42 @@
-# rock-paper-scissors
+# Rock Paper Scissors
 
-## Project setup
-```
-npm install
+Rock Paper Scissors game made in Vue, this is a challenge from [FrontendMentor](https://www.frontendmentor.io/challenges)
+
+## Features
+
+- Score calculation
+- Games against a computer
+- User friendly & simple interface
+- Responsive on all devices
+
+## Contributing
+
+Contributions are always welcome!
+
+I highly appreciate contributions and feedback.
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/JakubKb/Rock-paper-scissors-game
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+Install dependencies
+
+```bash
+  npm install
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+Start the server
+
+```bash
+  npm run serve
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+The project will be available at http://localhost:8080/
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+
+This project uses the standard [MIT](https://choosealicense.com/licenses/mit/) license
