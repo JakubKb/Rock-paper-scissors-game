@@ -1,6 +1,6 @@
 <template>
-  <div class="container" :class="{ 'no-bg': hideBackground }">
-    <span class="top-btns">
+  <div class="container" :class="{ 'no-bg': hideBackground }" ref="container">
+    <span class="top-btns" ref="top-btn">
       <button
         class="paper play-btn"
         @click="makeChoice('paper')"
@@ -55,6 +55,7 @@ export default {
 
       this.$refs[playerChoice + "Button"].classList.add("selected");
       this.$refs[houseChoice + "Button"].classList.add("selected");
+      this.$refs["container"].style.flexDirection = "row";
 
       this.youPicked = playerChoice;
       this.hideBackground = true;
