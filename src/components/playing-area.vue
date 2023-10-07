@@ -44,8 +44,13 @@ export default {
       this.buttonsDisabled = true;
       const choices = ["paper", "scissors", "rock"];
 
-      const randomIndex = Math.floor(Math.random() * choices.length);
-      const houseChoice = choices[randomIndex];
+      let randomIndex = Math.floor(Math.random() * choices.length);
+      let houseChoice = choices[randomIndex];
+
+      while (houseChoice === playerChoice) {
+        randomIndex = Math.floor(Math.random() * choices.length);
+        houseChoice = choices[randomIndex];
+      }
 
       if (playerChoice === "scissors") {
         this.housePicked = ["rock", "paper"][Math.floor(Math.random() * 2)];
