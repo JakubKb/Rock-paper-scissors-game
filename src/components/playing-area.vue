@@ -26,6 +26,10 @@
     >
       <img src="../assets/images/icon-rock.svg" />
     </button>
+    <div class="summary" :style="{ display: summaryDisplay }">
+      <p>You picked</p>
+      <p>the house picked</p>
+    </div>
   </div>
 </template>
 
@@ -37,11 +41,14 @@ export default {
       youPicked: "",
       housePicked: "",
       hideBackground: false,
+      summaryDisplay: "none",
     };
   },
   methods: {
     makeChoice(playerChoice) {
+      this.summaryDisplay = "flex";
       this.buttonsDisabled = true;
+      this.showSecondContainer = true;
       const choices = ["paper", "scissors", "rock"];
 
       let randomIndex = Math.floor(Math.random() * choices.length);
@@ -147,9 +154,20 @@ export default {
   margin-bottom: 50px;
 }
 
-.selected {
-  -webkit-box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
-  -moz-box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
-  box-shadow: -4px 34px 6px -26px rgba(66, 68, 90, 0.5);
+.summary {
+  position: absolute;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.summary p {
+  color: white;
+  text-transform: uppercase;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 20px;
 }
 </style>
