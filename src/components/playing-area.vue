@@ -66,6 +66,10 @@ export default {
       }
 
       this.$refs[playerChoice + "Button"].classList.add("selected");
+      if (houseChoice === "rock") {
+        this.$refs[playerChoice + "Button"].style.marginRight = "100px";
+      }
+
       this.$refs[houseChoice + "Button"].classList.add("selected");
       this.$refs["container"].style.flexDirection = "row";
 
@@ -160,7 +164,7 @@ export default {
   text-align: center;
   width: 100%;
   top: 60%;
-  left: 50%;
+  left: 52%;
   transform: translateX(-50%);
 }
 
@@ -168,6 +172,6 @@ export default {
   color: white;
   text-transform: uppercase;
   font-family: "Barlow Semi Condensed", sans-serif;
-  font-size: 20px;
+  font-size: 17px;
 }
 </style>
