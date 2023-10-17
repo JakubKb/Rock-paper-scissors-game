@@ -83,11 +83,26 @@ export default {
 
         this.$refs[houseChoice + "Button"].classList.add("selected");
         this.$refs["container"].style.flexDirection = "row";
+
+        if (
+          (this.youPicked === "paper" && this.housePicked === "rock") ||
+          (this.youPicked === "rock" && this.housePicked === "scissors") ||
+          (this.youPicked === "scissors" && this.housePicked === "paper")
+        ) {
+          console.log("You Won!");
+        } else if (
+          (this.housePicked === "paper" && this.youPicked === "rock") ||
+          (this.housePicked === "rock" && this.youPicked === "scissors") ||
+          (this.housePicked === "scissors" && this.youPicked === "paper")
+        ) {
+          console.log("House Won!");
+        }
       }, 3000);
     },
   },
 };
 </script>
+
 <style scoped>
 .container {
   display: flex;
