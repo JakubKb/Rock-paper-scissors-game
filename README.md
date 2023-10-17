@@ -1,6 +1,6 @@
 # Rock Paper Scissors
 
-Rock Paper Scissors game made in Vue, this is a challenge from [FrontendMentor](https://www.frontendmentor.io/challenges)
+Rock Paper Scissors game made in Vue, this is a challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges)
 
 ## Features
 
