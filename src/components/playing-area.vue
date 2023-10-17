@@ -56,15 +56,16 @@ export default {
 
       this.youPicked = playerChoice;
 
-      // Ukryj przyciski gracza (poza tym, który został wybrany)
       for (const choice of choices) {
         if (choice !== playerChoice) {
           this.$refs[choice + "Button"].style.display = "none";
         }
       }
 
+      this.$refs[playerChoice + "Button"].style.marginRight = "45vw";
+
       setTimeout(() => {
-        // Opóźnienie dla wyboru domu
+        this.$refs[playerChoice + "Button"].style.marginRight = "0";
         let houseChoice = choices[Math.floor(Math.random() * choices.length)];
 
         while (houseChoice === playerChoice) {
@@ -73,7 +74,6 @@ export default {
 
         this.housePicked = houseChoice;
 
-        // Pokaż przycisk wybrany przez dom
         this.$refs[houseChoice + "Button"].style.display = "block";
 
         this.$refs[playerChoice + "Button"].classList.add("selected");
