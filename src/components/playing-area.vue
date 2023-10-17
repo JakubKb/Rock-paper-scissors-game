@@ -27,9 +27,10 @@
       <img src="../assets/images/icon-rock.svg" />
     </button>
     <div class="summary" :style="{ display: summaryDisplay }">
-      <p>You picked</p>
-      <p>the house picked</p>
+      <p>You picked {{ youPicked }}</p>
+      <p>the house picked {{ housePicked }}</p>
     </div>
+    <span class="button-behind" :style="{ display: behindDisplay }"> </span>
   </div>
 </template>
 
@@ -42,50 +43,47 @@ export default {
       housePicked: "",
       hideBackground: false,
       summaryDisplay: "none",
+      behindDisplay: "none",
     };
   },
   methods: {
     makeChoice(playerChoice) {
+      this.hideBackground = true;
       this.summaryDisplay = "flex";
       this.buttonsDisabled = true;
       this.showSecondContainer = true;
       const choices = ["paper", "scissors", "rock"];
 
-      let randomIndex = Math.floor(Math.random() * choices.length);
-      let houseChoice = choices[randomIndex];
-
-      while (houseChoice === playerChoice) {
-        randomIndex = Math.floor(Math.random() * choices.length);
-        houseChoice = choices[randomIndex];
-      }
-
-      if (playerChoice === "scissors") {
-        this.housePicked = ["rock", "paper"][Math.floor(Math.random() * 2)];
-      } else {
-        this.housePicked = houseChoice;
-      }
-
-      this.$refs[playerChoice + "Button"].classList.add("selected");
-      if (houseChoice === "rock") {
-        this.$refs[playerChoice + "Button"].style.marginRight = "100px";
-      }
-
-      this.$refs[houseChoice + "Button"].classList.add("selected");
-      this.$refs["container"].style.flexDirection = "row";
-
       this.youPicked = playerChoice;
-      this.hideBackground = true;
-      for (let i = 0; i < choices.length; i++) {
-        const choice = choices[i];
-        if (choice !== this.youPicked && choice !== this.housePicked) {
+
+      // Ukryj przyciski gracza (poza tym, który został wybrany)
+      for (const choice of choices) {
+        if (choice !== playerChoice) {
           this.$refs[choice + "Button"].style.display = "none";
-        } else if (
-          this.housePicked == this.youPicked ||
-          this.youPicked == this.housePicked
-        ) {
-          return;
         }
       }
+
+      setTimeout(() => {
+        // Opóźnienie dla wyboru domu
+        let houseChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        while (houseChoice === playerChoice) {
+          houseChoice = choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        this.housePicked = houseChoice;
+
+        // Pokaż przycisk wybrany przez dom
+        this.$refs[houseChoice + "Button"].style.display = "block";
+
+        this.$refs[playerChoice + "Button"].classList.add("selected");
+        if (houseChoice === "rock") {
+          this.$refs[playerChoice + "Button"].style.marginRight = "100px";
+        }
+
+        this.$refs[houseChoice + "Button"].classList.add("selected");
+        this.$refs["container"].style.flexDirection = "row";
+      }, 3000);
     },
   },
 };
