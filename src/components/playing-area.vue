@@ -28,6 +28,12 @@
     </button>
     <div class="summary" :style="{ display: summaryDisplay }">
       <p>You picked {{ youPicked }}</p>
+      <div class="middle">
+
+      
+      <h3 :style="{display: winStateDisplay}">You {{ winState }}</h3>
+      <button :style="{display: playAgainDisplay}">Play again</button>
+    </div>
       <p>the house picked {{ housePicked }}</p>
     </div>
     <span class="button-behind" :style="{ display: behindDisplay }"> </span>
@@ -44,6 +50,9 @@ export default {
       hideBackground: false,
       summaryDisplay: "none",
       behindDisplay: "none",
+      winState: "",
+      winStateDisplay: "none",
+      playAgainDisplay: "none",
     };
   },
   methods: {
@@ -89,12 +98,18 @@ export default {
           (this.youPicked === "rock" && this.housePicked === "scissors") ||
           (this.youPicked === "scissors" && this.housePicked === "paper")
         ) {
+          this.winStateDisplay = "flex"
+          this.winState = "Won"
+          this.playAgainDisplay = "flex"
           console.log("You Won!");
         } else if (
           (this.housePicked === "paper" && this.youPicked === "rock") ||
           (this.housePicked === "rock" && this.youPicked === "scissors") ||
           (this.housePicked === "scissors" && this.youPicked === "paper")
         ) {
+          this.winState = "Loose"
+          this.winStateDisplay = "flex"
+          this.playAgainDisplay = "flex"
           console.log("House Won!");
         }
       }, 3000);
@@ -187,4 +202,20 @@ export default {
   font-family: "Barlow Semi Condensed", sans-serif;
   font-size: 17px;
 }
+
+.middle {
+  position:absolute;
+  top: 70%;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+
+.middle h3 {
+  font-size: 60px;
+  color: #fff;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+
 </style>
