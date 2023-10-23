@@ -57,6 +57,7 @@ export default {
   },
   methods: {
     makeChoice(playerChoice) {
+      this.behindDisplay = "flex"
       this.hideBackground = true;
       this.summaryDisplay = "flex";
       this.buttonsDisabled = true;
@@ -76,7 +77,7 @@ export default {
       setTimeout(() => {
         this.$refs[playerChoice + "Button"].style.marginRight = "0";
         let houseChoice = choices[Math.floor(Math.random() * choices.length)];
-
+        this.behindDisplay = "none"
         while (houseChoice === playerChoice) {
           houseChoice = choices[Math.floor(Math.random() * choices.length)];
         }
@@ -241,5 +242,13 @@ export default {
   opacity: 0.7;
 }
 
-
+.button-behind {
+    position: absolute;
+    top: 40%;
+    left: 63%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    height: 147px;
+    width: 147px;
+  }
 </style>
