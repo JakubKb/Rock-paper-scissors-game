@@ -32,7 +32,7 @@
 
       
       <h3 :style="{display: winStateDisplay}">You {{ winState }}</h3>
-      <button :style="{display: playAgainDisplay}">Play again</button>
+      <button :style="{display: playAgainDisplay}" class="playAgainBtn">Play again</button>
     </div>
       <p>the house picked {{ housePicked }}</p>
     </div>
@@ -207,14 +207,38 @@ export default {
   position:absolute;
   top: 70%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .middle h3 {
   font-size: 60px;
+  text-align: center;
   color: #fff;
   font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.playAgainBtn {
+  text-align: center;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px 10px 30px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+.playAgainBtn:hover {
+  transition: 0.3s ease-in-out;
+  opacity: 0.7;
 }
 
 
