@@ -32,7 +32,7 @@
 
       
       <h3 :style="{display: winStateDisplay}">You {{ winState }}</h3>
-      <button :style="{display: playAgainDisplay}" class="playAgainBtn">Play again</button>
+      <button :style="{display: playAgainDisplay}" class="playAgainBtn" @click="playAgain">Play again</button>
     </div>
       <p>the house picked {{ housePicked }}</p>
     </div>
@@ -114,6 +114,29 @@ export default {
           console.log("House Won!");
         }
       }, 3000);
+    },
+    playAgain() {
+      
+      this.buttonsDisabled = false;
+      this.youPicked = "";
+      this.housePicked = "";
+      this.hideBackground = false;
+      this.summaryDisplay = "none";
+      this.winStateDisplay = "none";
+      this.playAgainDisplay = "none";
+
+     
+      const choices = ["paper", "scissors", "rock"];
+      for (const choice of choices) {
+        this.$refs[choice + "Button"].style.display = "block";
+      }
+
+      for (const choice of choices) {
+        this.$refs[choice + "Button"].classList.remove("selected");
+      }
+
+      
+      this.$refs["container"].style.flexDirection = "column";
     },
   },
 };
