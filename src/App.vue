@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <headerVue />
-    <playingAreaVue />
+    <headerVue :score="score" />
+    <playingAreaVue @update-score="updateScore" />
     <rulesBtn />
   </div>
 </template>
@@ -17,8 +17,20 @@ export default {
     playingAreaVue: playingAreaVue,
     rulesBtn: rulesBtn,
   },
+  data() {
+    return {
+      score: 0,
+    };
+  },
+  methods: {
+    updateScore() {
+  
+      this.score++; 
+    }
+  }
 };
 </script>
+
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");

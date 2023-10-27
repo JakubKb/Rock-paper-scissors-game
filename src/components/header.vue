@@ -18,13 +18,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      score: 0,
-    };
-  },
+  props: ['score'], 
 };
 </script>
+
 
 <style scoped>
 .container {

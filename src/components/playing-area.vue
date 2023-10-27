@@ -102,6 +102,7 @@ export default {
           this.winStateDisplay = "flex"
           this.winState = "Won"
           this.playAgainDisplay = "flex"
+          this.$emit("update-score")
           console.log("You Won!");
         } else if (
           (this.housePicked === "paper" && this.youPicked === "rock") ||
