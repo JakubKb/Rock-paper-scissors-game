@@ -91,9 +91,9 @@ export default {
 
          this.$refs[playerChoice + "Button"].classList.add("selected", "left-button");
   this.$refs[houseChoice + "Button"].classList.add("selected", "right-button");
-        if (houseChoice === "rock") {
-          this.$refs[playerChoice + "Button"].style.marginRight = "100px";
-        }
+      if(houseChoice === "rock" && playerChoice === "scissors" || houseChoice === "rock" &&  playerChoice === "paper") {
+        this.$refs[playerChoice + "Button"].style.marginRight = "100px"
+      }
 
         this.$refs[houseChoice + "Button"].classList.add("selected");
         if(playerChoice === "rock") {
