@@ -113,6 +113,7 @@ export default {
           this.winStateDisplay = "flex"
           this.playAgainDisplay = "flex"
           console.log("House Won!");
+          this.$emit("reset-score")
         }
       }, 3000);
     },

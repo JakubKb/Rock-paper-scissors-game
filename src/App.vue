@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <headerVue :score="score" />
-    <playingAreaVue @update-score="updateScore" />
+    <playingAreaVue @update-score="updateScore" @reset-score="resetScore"/>
     <rulesBtn />
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
     updateScore() {
   
       this.score++; 
+    },
+    resetScore() {
+      this.score = 0
     }
   }
 };
