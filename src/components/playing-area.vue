@@ -95,6 +95,10 @@ export default {
         this.$refs[playerChoice + "Button"].style.marginRight = "100px"
       }
 
+      if(playerChoice === "rock") {
+        this.$refs[playerChoice + "Button"].style.marginRight = "100px"
+      }
+
         this.$refs[houseChoice + "Button"].classList.add("selected");
         if(playerChoice === "rock") {
           this.$refs["container"].style.flexDirection = "row-reverse";
