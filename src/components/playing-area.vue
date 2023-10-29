@@ -27,18 +27,21 @@
       <img src="../assets/images/icon-rock.svg" />
     </button>
     <div class="summary" :style="{ display: summaryDisplay }">
-      <p>You picked {{ youPicked }}</p>
+      <div class="choice">
+        <p>You picked {{ youPicked }}</p>
+      </div>
       <div class="middle">
-
-      
-      <h3 :style="{display: winStateDisplay}">You {{ winState }}</h3>
-      <button :style="{display: playAgainDisplay}" class="playAgainBtn" @click="playAgain">Play again</button>
-    </div>
-      <p>the house picked {{ housePicked }}</p>
+        <h3 :style="{ display: winStateDisplay }">You {{ winState }}</h3>
+        <button :style="{ display: playAgainDisplay }" class="playAgainBtn" @click="playAgain">Play again</button>
+      </div>
+      <div class="choice">
+        <p>The house picked {{ housePicked }}</p>
+      </div>
     </div>
     <span class="button-behind" :style="{ display: behindDisplay }"> </span>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -86,13 +89,19 @@ export default {
 
         this.$refs[houseChoice + "Button"].style.display = "block";
 
-        this.$refs[playerChoice + "Button"].classList.add("selected");
+         this.$refs[playerChoice + "Button"].classList.add("selected", "left-button");
+  this.$refs[houseChoice + "Button"].classList.add("selected", "right-button");
         if (houseChoice === "rock") {
           this.$refs[playerChoice + "Button"].style.marginRight = "100px";
         }
 
         this.$refs[houseChoice + "Button"].classList.add("selected");
-        this.$refs["container"].style.flexDirection = "row";
+        if(playerChoice === "rock") {
+          this.$refs["container"].style.flexDirection = "row-reverse";
+
+        }else {
+          this.$refs["container"].style.flexDirection = "row";       
+        }
 
         if (
           (this.youPicked === "paper" && this.housePicked === "rock") ||
@@ -115,6 +124,7 @@ export default {
           console.log("House Won!");
           this.$emit("reset-score")
         }
+   
       }, 3000);
     },
     playAgain() {
