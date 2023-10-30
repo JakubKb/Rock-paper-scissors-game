@@ -66,7 +66,7 @@ export default {
       this.buttonsDisabled = true;
       this.showSecondContainer = true;
       const choices = ["paper", "scissors", "rock"];
-
+this.$refs[playerChoice + "Button"].style.marginRight = "0px"
       this.youPicked = playerChoice;
 
       for (const choice of choices) {
@@ -75,6 +75,10 @@ export default {
         }
       }
 
+      if(playerChoice === "rock") {
+       
+        this.$refs[playerChoice + "Button"].style.marginBottom = "50px"
+      }
       this.$refs[playerChoice + "Button"].style.marginRight = "45vw";
 
       setTimeout(() => {
@@ -97,6 +101,7 @@ export default {
 
       if(playerChoice === "rock") {
         this.$refs[playerChoice + "Button"].style.marginRight = "100px"
+        
       }
 
         this.$refs[houseChoice + "Button"].classList.add("selected");
@@ -140,11 +145,11 @@ export default {
       this.summaryDisplay = "none";
       this.winStateDisplay = "none";
       this.playAgainDisplay = "none";
-
-     
+      this.$refs["rockButton"].style.marginRight = "0px"
       const choices = ["paper", "scissors", "rock"];
       for (const choice of choices) {
         this.$refs[choice + "Button"].style.display = "block";
+        this.$refs[choice + "Button"].style.margin = "0px";
       }
 
       for (const choice of choices) {
@@ -205,7 +210,6 @@ export default {
 
 .rock {
   background-color: #db3152;
-  margin-bottom: 50px;
   display: flex;
 }
 
