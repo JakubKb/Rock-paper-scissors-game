@@ -47,4 +47,12 @@ export default {
   border-radius: 7px;
   cursor: pointer;
 }
+
+@media (min-width: 601px) {
+  .container {
+    position: absolute;
+    bottom: -70px;
+    right: 25px;
+  }
+}
 </style>

@@ -57,4 +57,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (min-width: 601px) {
+  .app {
+    display: block; 
+  }
+}
 </style>

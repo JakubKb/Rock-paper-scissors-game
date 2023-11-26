@@ -66,7 +66,6 @@ export default {
       this.buttonsDisabled = true;
       this.showSecondContainer = true;
       const choices = ["paper", "scissors", "rock"];
-this.$refs[playerChoice + "Button"].style.marginRight = "0px"
       this.youPicked = playerChoice;
 
       for (const choice of choices) {
@@ -74,7 +73,7 @@ this.$refs[playerChoice + "Button"].style.marginRight = "0px"
           this.$refs[choice + "Button"].style.display = "none";
         }
       }
-
+this.$refs["rockButton"].style.marginBottom = "0px"
       if(playerChoice === "rock") {
        
         this.$refs[playerChoice + "Button"].style.marginBottom = "50px"
@@ -146,6 +145,7 @@ this.$refs[playerChoice + "Button"].style.marginRight = "0px"
       this.winStateDisplay = "none";
       this.playAgainDisplay = "none";
       this.$refs["rockButton"].style.marginRight = "0px"
+      this.$refs["rockButton"].style.marginBottom = "50px"
       const choices = ["paper", "scissors", "rock"];
       for (const choice of choices) {
         this.$refs[choice + "Button"].style.display = "block";
@@ -211,6 +211,7 @@ this.$refs[playerChoice + "Button"].style.marginRight = "0px"
 .rock {
   background-color: #db3152;
   display: flex;
+  margin-bottom: 50px;
 }
 
 .play-btn img {
@@ -294,4 +295,5 @@ this.$refs[playerChoice + "Button"].style.marginRight = "0px"
     height: 147px;
     width: 147px;
   }
+
 </style>
