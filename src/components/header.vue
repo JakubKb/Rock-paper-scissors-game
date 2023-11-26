@@ -74,4 +74,14 @@ export default {
   font-size: 45px;
   color: hsl(229, 25%, 31%) !important;
 }
+
+@media (min-width: 601px) {
+  .container {
+    width: 600px;
+  }
+  .container-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>
