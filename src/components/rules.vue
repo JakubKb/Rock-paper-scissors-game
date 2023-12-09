@@ -34,7 +34,11 @@ export default {
   width: 100vw;
   background-color: #fff;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  left: 50%;
+  top: 0.1px;
+  transform: translateX(-50%);
 }
 
 h2 {
